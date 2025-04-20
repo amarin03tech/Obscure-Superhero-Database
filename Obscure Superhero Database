@@ -1,1 +1,41 @@
+#include <iostream>
+#include <string>
 
+using namespace std:
+
+const int num_heroes =  10;
+
+string names [num_heroes] = {
+    "Arm-Fall-Off-Boy", "Color Kid", "Dogwelder", "Bouncing Boy", "Captain Ultra", "Doorman", "Hindsight Lad", "Matter-Eater Lad", "The Heckeler", "Zeitgeist"
+};
+
+string superpowers [num_heroes] = {
+    "Detachable Limbs", "Color Manupulation", "Welding dogs to people", "bounces like a ball", 
+    "Super strenght and flight", "Interdimensional doorway", "Sees mistakes after they happen", 
+    "Eats all matter", "Sarcastic energy", "Acidic vomit"
+};
+
+string weaknesses [num_heroes] = {
+    "Easily dissarmed", "Limited combat ability", "Morally questionable", "Can be punctured", 
+    "Fear of life", "Only works when someone dies", "Only helpful after events", "Indigestion",
+    "Annoying personality", "Digestive problems"
+};
+
+sring otherInfo[num_heroes][2]= {
+    {"1989", "DC"}, {"1966", "DC"}, {"1996", "DC"}, {"1961", "DC"}, {"1979", "Marvel"},
+    {"1989", "Marvel"}, {"1993", "Marvel"}, {"1962", "DC"}, {"1992", "DC"}, {"2001", "Marvel"}
+}; 
+
+string toLower(const string& str) {
+    string result = str;
+    transform(result.begin(), result.end(), result.begin(), ::tolower);
+    return result;
+}
+
+string toUpper(const string& str) {
+    string result = str;
+    transform(result.begin(), result.end(), result.begin(), ::toupper);
+    return result;
+}
+
+void 
