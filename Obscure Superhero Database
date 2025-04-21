@@ -38,4 +38,122 @@ string toUpper(const string& str) {
     return result;
 }
 
-void 
+void displayAll(bool uppercase) {
+    for (int i =0; i < num_heroes; i++) {
+        string name = uppercase ? toUpper(names[i]) : toLower(names[i]);
+        string power = uppercase ? toUpper(superpowers[i]) : toLower(superpowers[i]);
+        string weak = uppercase ? toUpper(weaknesses[i]) : toLower(weaknesses[i]);
+        string year = uppercase ? toUpper(otherInfo[i][0]) : toLower(otherInfo[i][0]);
+        string universe = uppercase ? toUpper(otherInfo[i][1]) : toLower(otherInfo[i][1]);
+
+        cout << "Name: " << name <<;
+        cout << "Superpowers: " << power <<;
+        cout << "Weakness: " << weak <<;
+        cout << "Year Introduced: " << year <<;
+        cout << "Universe: " << universe <<;  
+    }
+}
+
+void searchByName() {
+    string input;
+    cout << "Enter superhero name to search: ";
+    getline(cin, input);
+    input = toLower(input);
+
+    bool found = false;
+    for (int i = 0; i < num_heroes; i++) {
+        if (toLower(names[i]) == input) {
+            cout << "\nFound Superhero:\n";
+            cout << "Name: " << names[i]
+                 << "\nSuperpower: " << superpowers[i]
+                 << "\nWeakness: " << weaknesses[i]
+                 << "\nYear Introduced: " << otherInfo[i][0]
+                 << "\nUniverse: " << otherInfo[i][1] << "\n";
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Superhero not found.\n";
+    }
+}
+
+void searchBySuperpowers() {
+    string input;
+    cout << "Enter keyword in superpower: ";
+    getline(cin, input);
+    input = toLower(input);
+
+    bool found = false;
+    for (int i = 0; i < num_heroes; i++) {
+        if (toLower(superpowers[i]).find(input) != string::npos) {
+            cout << "\nName: " << names[i]
+                 << "\nSuperpower: " << superpowers[i]
+                 << "\nWeakness: " << weaknesses[i]
+                 << "\nYear Introduced: " << otherInfo[i][0]
+                 << "\nUniverse: " << otherInfo[i][1] << "\n";
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "No superheroes with that power found.\n";
+    }
+}
+
+void sortSuperheroes() {
+    for (int i = 0; i < num_heroes - 1; i++) {
+        for (int j = i + 1; j < num_heroes; j++) {
+            if (names[i], names[j]) {
+                swap(names[i], names[j]);
+                swap(superpowers[i], superpowers[j]);
+                swap(weaknesses[i], weaknesses[j]);
+                swap(otherInfo[i][0], otherInfo[j][0]);
+                swap(otherInfo[i][1], otherInfo[j][1]);
+            }
+        }
+    }
+    cout << "Superhero sorted alphabetically.\n";
+}
+
+int main() {
+    int option;
+    do {
+        cout << "\n-- Superhero Database ---\n";
+        cout << "1. Search by Name\n";
+        cout << "2. Find by Superpower\n";
+        cout << "3. Sort Alphabetically\n";
+        cout << "4. Display All (Uppercase)\n";
+        cout << "5. Display All (Lowecase)\n";
+        cout << "0. Exit\n";
+        cout << "Choose an option: ";
+        cin >> option;
+        cin.ignore();
+
+        switch (option) {
+            case 1:
+                searchByName();
+                break;
+            case 2:
+                searchBySuperpower();
+                break;
+            case 3: 
+                sortSuperheroes();
+                break;
+            case 4:
+                displayAll(true);
+                break;
+            case 5:
+                displayAll(false);
+                break;
+            case 0:
+                cout << "Goodbye!\n";
+                break;
+            default; 
+                cout << "Invalit option. Please try again.\n";     
+        }
+        
+    } while (option !- 0);
+
+    return 0;
+}
