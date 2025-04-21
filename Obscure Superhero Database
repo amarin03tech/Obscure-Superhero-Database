@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 
-using namespace std:
+using namespace std;
 
 const int num_heroes =  10;
 
@@ -21,7 +22,7 @@ string weaknesses [num_heroes] = {
     "Annoying personality", "Digestive problems"
 };
 
-sring otherInfo[num_heroes][2]= {
+string otherInfo[num_heroes][2]= {
     {"1989", "DC"}, {"1966", "DC"}, {"1996", "DC"}, {"1961", "DC"}, {"1979", "Marvel"},
     {"1989", "Marvel"}, {"1993", "Marvel"}, {"1962", "DC"}, {"1992", "DC"}, {"2001", "Marvel"}
 }; 
@@ -46,11 +47,11 @@ void displayAll(bool uppercase) {
         string year = uppercase ? toUpper(otherInfo[i][0]) : toLower(otherInfo[i][0]);
         string universe = uppercase ? toUpper(otherInfo[i][1]) : toLower(otherInfo[i][1]);
 
-        cout << "Name: " << name <<;
-        cout << "Superpowers: " << power <<;
-        cout << "Weakness: " << weak <<;
-        cout << "Year Introduced: " << year <<;
-        cout << "Universe: " << universe <<;  
+        cout << "\nName: " << name
+             << "\nSuperpowers: " << power
+             << "\nWeakness: " << weak
+             << "\nYear Introduced: " << year
+             << "\nUniverse: " << universe;  
     }
 }
 
@@ -104,7 +105,7 @@ void searchBySuperpowers() {
 void sortSuperheroes() {
     for (int i = 0; i < num_heroes - 1; i++) {
         for (int j = i + 1; j < num_heroes; j++) {
-            if (names[i], names[j]) {
+            if (names[i] > names[j]) {
                 swap(names[i], names[j]);
                 swap(superpowers[i], superpowers[j]);
                 swap(weaknesses[i], weaknesses[j]);
@@ -135,7 +136,7 @@ int main() {
                 searchByName();
                 break;
             case 2:
-                searchBySuperpower();
+                searchBySuperpowers();
                 break;
             case 3: 
                 sortSuperheroes();
@@ -149,11 +150,11 @@ int main() {
             case 0:
                 cout << "Goodbye!\n";
                 break;
-            default; 
+            default:
                 cout << "Invalit option. Please try again.\n";     
         }
-        
-    } while (option !- 0);
+
+    } while (option != 0);
 
     return 0;
 }
